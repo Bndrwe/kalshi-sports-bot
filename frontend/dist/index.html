@@ -675,17 +675,76 @@
         }
 
         async function triggerScan() {
-            const btn = document.getElementById('scanBtn');
-            const originalText = btn.textContent;
-            btn.textContent = 'Scanning...';
-            btn.disabled = true;
-            try {
-                await fetch(`${API}/api/scan`, { method: 'POST' });
-            } catch (e) { console.warn('Mock scan'); }
-            await fetchStatus();
-            btn.textContent = originalText;
-            btn.disabled = false;
+  const btn = document.getElementById('scanBtn');
+  const originalText = btn.textContent;
+  btn.textContent = 'Scanning...';
+  btn.disabled = true;
+  
+  try {
+    // Fetch real MLB games from Stats API
+    const today = new Date().toISOString().split('T')[0];
+    const res = await fetch(`https://statsapi.mlb.com/api/v1/schedule?sportId=1&date=${today}&hydrate=team,probablePitcher`);
+    const data = await res.json();
+    const games = data.dates?.[0]?.games || [];
+    
+    // Generate 3-5 random mock signals from today's games
+    const numSignals = Math.floor(Math.random() * 3) + 3;
+    const newSignals = games.slice(0, numSignals).map(g => ({
+      timestamp: new Date().toISOString(),
+      sport: 'baseball',
+      event_title: `${g.teams.away.team.name} @ ${g.teams.home.team.name}`,
+      side: Math.random() > 0.5 ? 'yes' : 'no',
+      price_cents: Math.floor(45 + Math.random() * 10),
+      model_probability: 0.5 + (Math.random() * 0.3 - 0.15),
+      edge: 0.08 + Math.random() * 0.12,
+      confidence: 0.6 + Math.random() * 0.25,
+      suggested_size_dollars: Math.floor(15 + Math.random() * 35),
+      status: 'generated',
+      analysis: {
+        home_team: g.teams.home.team.name,
+        away_team: g.teams.away.team.name,
+        home_win_probability: 0.45 + Math.random() * 0.1,
+        factors: {
+          pitching: { 
+            home_pitcher: g.teams.home.probablePitcher?.fullName || 'TBD',
+            away_pitcher: g.teams.away.probablePitcher?.fullName || 'TBD',
+            home_era: 3.5 + Math.random(), 
+            away_era: 3.5 + Math.random() 
+          },
+          batting: { home_ops: 0.7 + Math.random() * 0.15, away_ops: 0.7 + Math.random() * 0.15 },
+          bullpen: { home_era: 3.8 + Math.random(), away_era: 3.8 + Math.random() }
         }
+      }
+    }));
+    
+    // Update global state
+    window.mockSignals = [...(window.mockSignals || []), ...newSignals];
+    window.mockScanCount = (window.mockScanCount || 12) + 1;
+    
+    // Refresh dashboard with new data
+    updateDashboard({
+      running: botRunning,
+      mode: currentMode,
+      scan_count: window.mockScanCount,
+      strategy_stats: {
+        balance_cents: 100000,
+        signals_generated: window.mockSignals.length,
+        signals_traded: 12,
+        wins: 8,
+        losses: 4,
+        daily_pnl_cents: 1250
+      },
+      recent_signals: window.mockSignals
+    });
+    
+  } catch (e) {
+    console.warn('Mock scan failed:', e);
+    await fetchStatus();
+  }
+  
+  btn.textContent = originalText;
+  btn.disabled = false;
+}
 
         async function toggleMode() {
             const newMode = currentMode === 'live' ? 'paper' : 'live';
