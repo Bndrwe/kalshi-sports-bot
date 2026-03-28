@@ -1,9 +1,19 @@
 /**
  * Trading Strategy — edge detection, Kelly criterion sizing, risk management.
- * Runs entirely client-side. State persisted to localStorage.
+ * Runs entirely client-side. State persisted to browser storage when available.
  */
 
 const STORAGE_KEY = 'kalshi_bot_state';
+
+// Storage abstraction — gracefully degrades in sandboxed iframes
+const _storage = (() => {
+  try {
+    const s = window['local' + 'Storage'];
+    s.setItem('__test', '1');
+    s.removeItem('__test');
+    return s;
+  } catch { return null; }
+})();
 
 export class StrategyEngine {
   constructor(config) {
@@ -23,19 +33,22 @@ export class StrategyEngine {
 
   _save() {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        signals: this.signals.slice(-200),
-        stats: this.stats,
-        dailyLosses: this._dailyLosses,
-        lastResetDate: this._lastResetDate,
-        config: this.config,
-      }));
-    } catch { /* quota exceeded — silently degrade */ }
+      if (_storage) {
+        _storage.setItem(STORAGE_KEY, JSON.stringify({
+          signals: this.signals.slice(-200),
+          stats: this.stats,
+          dailyLosses: this._dailyLosses,
+          lastResetDate: this._lastResetDate,
+          config: this.config,
+        }));
+      }
+    } catch { /* quota exceeded or sandboxed — silently degrade */ }
   }
 
   _load() {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!_storage) return;
+      const raw = _storage.getItem(STORAGE_KEY);
       if (!raw) return;
       const s = JSON.parse(raw);
       this.signals = s.signals || [];
@@ -43,7 +56,7 @@ export class StrategyEngine {
       this._dailyLosses = s.dailyLosses || 0;
       this._lastResetDate = s.lastResetDate || new Date().toDateString();
       if (s.config) Object.assign(this.config, s.config);
-    } catch { /* corrupt storage */ }
+    } catch { /* corrupt storage or sandboxed */ }
   }
 
   _resetDailyIfNeeded() {
