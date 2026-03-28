@@ -33,7 +33,6 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             background: var(--bg);
             color: var(--text);
@@ -52,35 +51,12 @@
             border-bottom: 1px solid var(--border);
             background: var(--bg-card);
         }
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .header-left { display: flex; align-items: center; gap: 16px; }
+        .logo { display: flex; align-items: center; gap: 10px; }
         .logo svg { width: 28px; height: 28px; }
-        .logo-text {
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-            color: var(--text-bright);
-        }
-        .logo-sub {
-            font-size: 11px;
-            color: var(--text-dim);
-            font-family: var(--mono);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .logo-text { font-size: 16px; font-weight: 700; letter-spacing: -0.3px; color: var(--text-bright); }
+        .logo-sub { font-size: 11px; color: var(--text-dim); font-family: var(--mono); text-transform: uppercase; letter-spacing: 1px; }
+        .header-right { display: flex; align-items: center; gap: 12px; }
 
         /* Status Badges */
         .badge {
@@ -93,16 +69,8 @@
             font-weight: 600;
             font-family: var(--mono);
         }
-        .badge-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
+        .badge-dot { width: 7px; height: 7px; border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
         .badge-running { background: var(--green-dim); color: var(--green); }
         .badge-running .badge-dot { background: var(--green); }
         .badge-stopped { background: var(--red-dim); color: var(--red); }
@@ -120,24 +88,18 @@
             cursor: pointer;
             border: 1px solid var(--border);
             transition: all 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
         }
         .btn:hover { transform: translateY(-1px); }
-        .btn-primary {
-            background: var(--accent);
-            color: var(--bg);
-            border-color: var(--accent);
-        }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
         .btn-primary:hover { background: #06b6d4; }
-        .btn-danger {
-            background: transparent;
-            color: var(--red);
-            border-color: var(--red);
-        }
+        .btn-danger { background: transparent; color: var(--red); border-color: var(--red); }
         .btn-danger:hover { background: var(--red-dim); }
-        .btn-ghost {
-            background: transparent;
-            color: var(--text);
-        }
+        .btn-ghost { background: transparent; color: var(--text); }
         .btn-ghost:hover { background: var(--bg-card-hover); }
         .btn-sm { padding: 5px 10px; font-size: 12px; }
 
@@ -185,74 +147,28 @@
             border-radius: 8px;
             padding: 14px;
         }
-        .stat-label {
-            font-size: 11px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-        .stat-value {
-            font-size: 22px;
-            font-weight: 700;
-            font-family: var(--mono);
-            color: var(--text-bright);
-        }
+        .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .stat-value { font-size: 22px; font-weight: 700; font-family: var(--mono); color: var(--text-bright); }
         .stat-value.positive { color: var(--green); }
         .stat-value.negative { color: var(--red); }
 
-        /* Signals Table */
+        /* Table */
         .table-wrap { overflow-x: auto; }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th {
-            padding: 10px 12px;
-            text-align: left;
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid var(--border);
-        }
-        td {
-            padding: 10px 12px;
-            border-bottom: 1px solid var(--border);
-            font-size: 13px;
-            font-family: var(--mono);
-        }
+        table { width: 100%; border-collapse: collapse; }
+        th { padding: 10px 12px; text-align: left; font-size: 11px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 13px; font-family: var(--mono); }
         tr:hover td { background: var(--bg-card-hover); }
-        .sport-tag {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 600;
-        }
+
+        .sport-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
         .sport-tennis { background: rgba(132,204,22,0.15); color: var(--tennis); }
         .sport-baseball { background: rgba(249,115,22,0.15); color: var(--baseball); }
         .side-yes { color: var(--green); }
         .side-no { color: var(--red); }
 
-        /* Config Panel */
-        .config-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-        .config-field {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .config-field label {
-            font-size: 11px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+        /* Form */
+        .config-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .config-field { display: flex; flex-direction: column; gap: 4px; }
+        .config-field label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
         .config-field input, .config-field textarea {
             background: var(--bg);
             border: 1px solid var(--border);
@@ -262,33 +178,12 @@
             font-family: var(--mono);
             font-size: 13px;
         }
-        .config-field input:focus, .config-field textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
         textarea { min-height: 80px; resize: vertical; }
 
         /* Tabs */
-        .tabs {
-            display: flex;
-            gap: 0;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 16px;
-        }
-        .tab {
-            padding: 10px 20px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-dim);
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            transition: all 0.15s;
-        }
-        .tab:hover { color: var(--text); }
-        .tab.active {
-            color: var(--accent);
-            border-bottom-color: var(--accent);
-        }
+        .tabs { display: flex; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+        .tab { padding: 10px 20px; font-size: 13px; font-weight: 600; color: var(--text-dim); cursor: pointer; border-bottom: 2px solid transparent; }
+        .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
@@ -305,84 +200,32 @@
             overflow-y: auto;
             color: var(--text-dim);
         }
-        .log-output .log-info { color: var(--accent); }
-        .log-output .log-warn { color: var(--yellow); }
-        .log-output .log-error { color: var(--red); }
+        .log-info { color: var(--accent); }
+        .log-warn { color: var(--yellow); }
+        .log-error { color: var(--red); }
 
         /* Analysis Cards */
-        .analysis-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 14px;
-            margin-bottom: 10px;
-        }
-        .analysis-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .analysis-title {
-            font-weight: 600;
-            font-size: 14px;
-            color: var(--text-bright);
-        }
-        .analysis-prob {
-            font-family: var(--mono);
-            font-weight: 700;
-            font-size: 18px;
-        }
-        .factor-bar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 6px;
-        }
-        .factor-label {
-            font-size: 11px;
-            color: var(--text-dim);
-            width: 90px;
-            flex-shrink: 0;
-        }
-        .factor-track {
-            flex: 1;
-            height: 6px;
-            background: var(--border);
-            border-radius: 3px;
-            position: relative;
-            overflow: hidden;
-        }
-        .factor-fill {
-            height: 100%;
-            border-radius: 3px;
-            transition: width 0.3s;
-        }
+        .analysis-card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; }
+        .analysis-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .analysis-title { font-weight: 600; font-size: 14px; color: var(--text-bright); }
+        .analysis-prob { font-family: var(--mono); font-weight: 700; font-size: 18px; }
+        .factor-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .factor-label { font-size: 11px; color: var(--text-dim); width: 90px; flex-shrink: 0; }
+        .factor-track { flex: 1; height: 6px; background: var(--border); border-radius: 3px; position: relative; overflow: hidden; }
+        .factor-fill { height: 100%; border-radius: 3px; }
         .factor-fill.positive { background: var(--green); }
         .factor-fill.negative { background: var(--red); }
         .factor-fill.neutral { background: var(--text-dim); }
-        .factor-value {
-            font-family: var(--mono);
-            font-size: 11px;
-            width: 50px;
-            text-align: right;
-            flex-shrink: 0;
-        }
+        .factor-value { font-family: var(--mono); font-size: 11px; width: 50px; text-align: right; }
 
-        /* Empty state */
-        .empty-state {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-dim);
-        }
-        .empty-state svg { margin-bottom: 12px; opacity: 0.3; }
+        .empty-state { text-align: center; padding: 40px; color: var(--text-dim); }
 
         /* Modal */
         .modal-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.8);
             z-index: 100;
             align-items: center;
             justify-content: center;
@@ -396,91 +239,53 @@
             max-width: 500px;
             width: 90%;
         }
-        .modal-title {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--text-bright);
-        }
+        .modal-title { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: var(--text-bright); }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .main { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .config-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 900px) { .main { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(3, 1fr); } }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <div class="header">
+    <header class="header">
         <div class="header-left">
             <div class="logo">
-                <svg viewBox="0 0 28 28" fill="none">
-                    <rect width="28" height="28" rx="6" fill="#22d3ee" fill-opacity="0.15"/>
-                    <path d="M7 14L11 18L21 8" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 <div>
                     <div class="logo-text">Kalshi Sports Bot</div>
-                    <div class="logo-sub">Tennis &amp; Baseball</div>
+                    <div class="logo-sub">Tennis & Baseball</div>
                 </div>
             </div>
         </div>
         <div class="header-right">
-            <span id="statusBadge" class="badge badge-stopped">
-                <span class="badge-dot"></span>
+            <div id="statusBadge" class="badge badge-stopped">
+                <div class="badge-dot"></div>
                 <span id="statusText">Stopped</span>
-            </span>
-            <span id="modeBadge" class="badge badge-paper">Paper</span>
-            <button class="btn btn-ghost btn-sm" onclick="triggerScan()">Scan Now</button>
-            <button id="startBtn" class="btn btn-primary btn-sm" onclick="toggleBot()">Start</button>
-            <button class="btn btn-ghost btn-sm" onclick="openCredentials()">API Keys</button>
-        </div>
-    </div>
-
-    <!-- Main -->
-    <div class="main">
-        <!-- Stats Row -->
-        <div class="full-width">
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-label">Balance</div>
-                    <div class="stat-value" id="statBalance">$0.00</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-label">Signals</div>
-                    <div class="stat-value" id="statSignals">0</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-label">Trades</div>
-                    <div class="stat-value" id="statTrades">0</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-label">Win Rate</div>
-                    <div class="stat-value" id="statWinRate">—</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-label">Daily P&L</div>
-                    <div class="stat-value" id="statPnl">$0.00</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-label">Scans</div>
-                    <div class="stat-value" id="statScans">0</div>
-                </div>
             </div>
+            <div id="modeBadge" class="badge badge-paper">Paper</div>
+            <button id="scanBtn" onclick="triggerScan()" class="btn btn-ghost btn-sm">Scan Now</button>
+            <button id="startBtn" onclick="toggleBot()" class="btn btn-primary btn-sm">Start</button>
+            <button onclick="openCredentials()" class="btn btn-ghost btn-sm">API Keys</button>
         </div>
+    </header>
 
-        <!-- Trade Signals -->
-        <div class="card full-width">
+    <main class="main">
+        <section class="card full-width">
+            <div class="stats-grid">
+                <div class="stat-box"><div class="stat-label">Balance</div><div id="statBalance" class="stat-value">$0.00</div></div>
+                <div class="stat-box"><div class="stat-label">Signals</div><div id="statSignals" class="stat-value">0</div></div>
+                <div class="stat-box"><div class="stat-label">Trades</div><div id="statTrades" class="stat-value">0</div></div>
+                <div class="stat-box"><div class="stat-label">Win Rate</div><div id="statWinRate" class="stat-value">—</div></div>
+                <div class="stat-box"><div class="stat-label">Daily P&L</div><div id="statPnl" class="stat-value">$0.00</div></div>
+                <div class="stat-box"><div class="stat-label">Scans</div><div id="statScans" class="stat-value">0</div></div>
+            </div>
+        </section>
+
+        <section class="card">
             <div class="card-header">
-                <span class="card-title">Trade Signals</span>
+                <h2 class="card-title">Trade Signals</h2>
                 <div style="display:flex;gap:8px;">
-                    <button class="btn btn-ghost btn-sm" onclick="filterSignals('all')">All</button>
-                    <button class="btn btn-ghost btn-sm" onclick="filterSignals('tennis')">Tennis</button>
-                    <button class="btn btn-ghost btn-sm" onclick="filterSignals('baseball')">Baseball</button>
+                    <button onclick="filterSignals('all')" class="btn btn-ghost btn-sm">All</button>
+                    <button onclick="filterSignals('tennis')" class="btn btn-ghost btn-sm">Tennis</button>
+                    <button onclick="filterSignals('baseball')" class="btn btn-ghost btn-sm">Baseball</button>
                 </div>
             </div>
             <div class="table-wrap">
@@ -492,128 +297,89 @@
                             <th>Event</th>
                             <th>Side</th>
                             <th>Price</th>
-                            <th>Model Prob</th>
-                            <th>Mkt Prob</th>
+                            <th>Model</th>
                             <th>Edge</th>
-                            <th>Confidence</th>
+                            <th>Conf</th>
                             <th>Size</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody id="signalsBody">
-                        <tr>
-                            <td colspan="11" class="empty-state">
-                                No signals yet. Start the bot or run a manual scan.
-                            </td>
-                        </tr>
+                        <tr><td colspan="10" class="empty-state">No signals yet. Start the bot or run a manual scan.</td></tr>
                     </tbody>
                 </table>
             </div>
-        </div>
+        </section>
 
-        <!-- Analysis & Config -->
-        <div class="card">
+        <section class="card">
             <div class="tabs">
                 <div class="tab active" onclick="switchTab(this, 'analysisTab')">Analysis</div>
                 <div class="tab" onclick="switchTab(this, 'mlbTab')">MLB Schedule</div>
-            </div>
-            <div id="analysisTab" class="tab-content active">
-                <div id="analysisContent">
-                    <div class="empty-state">
-                        Run a scan to see match analyses.
-                    </div>
-                </div>
-            </div>
-            <div id="mlbTab" class="tab-content">
-                <div id="mlbContent">
-                    <div class="empty-state">Loading MLB schedule...</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="tabs">
-                <div class="tab active" onclick="switchTab(this, 'configTab')">Config</div>
+                <div class="tab" onclick="switchTab(this, 'configTab')">Config</div>
                 <div class="tab" onclick="switchTab(this, 'logsTab')">Logs</div>
             </div>
-            <div id="configTab" class="tab-content active">
-                <div class="config-grid">
-                    <div class="config-field">
-                        <label>Min Edge Threshold</label>
-                        <input type="number" id="cfgEdge" value="0.08" step="0.01" min="0.01" max="0.50">
-                    </div>
-                    <div class="config-field">
-                        <label>Min Confidence</label>
-                        <input type="number" id="cfgConf" value="0.60" step="0.05" min="0.10" max="0.99">
-                    </div>
-                    <div class="config-field">
-                        <label>Max Position ($)</label>
-                        <input type="number" id="cfgMaxPos" value="50" step="5" min="1" max="500">
-                    </div>
-                    <div class="config-field">
-                        <label>Max Daily Loss ($)</label>
-                        <input type="number" id="cfgMaxLoss" value="200" step="10" min="10" max="2000">
-                    </div>
-                    <div class="config-field">
-                        <label>Kelly Fraction</label>
-                        <input type="number" id="cfgKelly" value="0.25" step="0.05" min="0.05" max="1.0">
-                    </div>
-                    <div class="config-field">
-                        <label>Scan Interval (sec)</label>
-                        <input type="number" id="cfgInterval" value="120" step="10" min="30" max="600">
-                    </div>
-                </div>
-                <div style="margin-top:16px;display:flex;gap:8px;">
-                    <button class="btn btn-primary btn-sm" onclick="saveConfig()">Save Config</button>
-                    <button class="btn btn-ghost btn-sm" onclick="toggleMode()">
-                        Switch to <span id="modeToggleText">Live</span>
-                    </button>
-                </div>
+            
+            <div id="analysisTab" class="tab-content active">
+                <div id="analysisContent"><div class="empty-state">Run a scan to see match analyses.</div></div>
             </div>
-            <div id="logsTab" class="tab-content">
-                <div class="log-output" id="logOutput">
-                    Waiting for logs...
-                </div>
-                <button class="btn btn-ghost btn-sm" style="margin-top:8px" onclick="refreshLogs()">Refresh</button>
-            </div>
-        </div>
-    </div>
 
-    <!-- Credentials Modal -->
-    <div class="modal-overlay" id="credModal">
+            <div id="mlbTab" class="tab-content">
+                <div id="mlbContent"><div class="empty-state">Loading MLB schedule...</div></div>
+            </div>
+
+            <div id="configTab" class="tab-content">
+                <div class="config-grid">
+                    <div class="config-field"><label>Min Edge Threshold</label><input type="number" id="cfgEdge" value="0.08" step="0.01"></div>
+                    <div class="config-field"><label>Min Confidence</label><input type="number" id="cfgConf" value="0.60" step="0.05"></div>
+                    <div class="config-field"><label>Max Position ($)</label><input type="number" id="cfgMaxPos" value="50"></div>
+                    <div class="config-field"><label>Max Daily Loss ($)</label><input type="number" id="cfgMaxLoss" value="200"></div>
+                    <div class="config-field"><label>Kelly Fraction</label><input type="number" id="cfgKelly" value="0.25" step="0.05"></div>
+                    <div class="config-field"><label>Scan Interval (sec)</label><input type="number" id="cfgInterval" value="120"></div>
+                </div>
+                <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:center;">
+                    <button onclick="saveConfig()" class="btn btn-primary">Save Config</button>
+                    <button onclick="toggleMode()" class="btn btn-ghost btn-sm">Switch to <span id="modeToggleText">Live</span></button>
+                </div>
+            </div>
+
+            <div id="logsTab" class="tab-content">
+                <div id="logOutput" class="log-output">Waiting for logs...</div>
+                <button onclick="refreshLogs()" class="btn btn-ghost btn-sm" style="margin-top:10px;width:100%;">Refresh</button>
+            </div>
+        </section>
+    </main>
+
+    <div id="credModal" class="modal-overlay">
         <div class="modal">
-            <div class="modal-title">Kalshi API Credentials</div>
-            <div class="config-grid" style="margin-bottom:16px;">
-                <div class="config-field" style="grid-column:1/-1;">
+            <h3 class="modal-title">Kalshi API Credentials</h3>
+            <div class="config-grid" style="grid-template-columns: 1fr;">
+                <div class="config-field">
                     <label>API Key ID</label>
                     <input type="text" id="credKeyId" placeholder="e.g., a952bcbe-ec3b-4b5b-b8f9-11dae589608c">
                 </div>
-                <div class="config-field" style="grid-column:1/-1;">
-                    <label>Private Key (PEM)</label>
-                    <textarea id="credPrivateKey" placeholder="-----BEGIN RSA PRIVATE KEY-----&#10;...&#10;-----END RSA PRIVATE KEY-----"></textarea>
-                </div>
                 <div class="config-field">
-                    <label>
-                        <input type="checkbox" id="credDemo" checked> Use Demo Environment
-                    </label>
+                    <label>Private Key (PEM)</label>
+                    <textarea id="credPrivateKey" placeholder="-----BEGIN RSA PRIVATE KEY-----..."></textarea>
                 </div>
-            </div>
-            <div style="display:flex;gap:8px;justify-content:flex-end;">
-                <button class="btn btn-ghost btn-sm" onclick="closeCredentials()">Cancel</button>
-                <button class="btn btn-primary btn-sm" onclick="saveCredentials()">Connect</button>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <input type="checkbox" id="credDemo" checked>
+                    <label for="credDemo" style="font-size:12px;color:var(--text-dim);">Use Demo Environment</label>
+                </div>
             </div>
             <div id="credStatus" style="margin-top:12px;font-size:12px;font-family:var(--mono);"></div>
+            <div style="margin-top:20px;display:flex;justify-content:flex-end;gap:12px;">
+                <button onclick="closeCredentials()" class="btn btn-ghost">Cancel</button>
+                <button onclick="saveCredentials()" class="btn btn-primary">Connect</button>
+            </div>
         </div>
     </div>
 
     <script>
-        const API = '';  // Same origin
-
+        const API = ''; // Same origin
         let botRunning = false;
         let currentMode = 'paper';
         let signalFilter = 'all';
 
-        // ── Polling ──────────────────────────────────────────────
         async function fetchStatus() {
             try {
                 const res = await fetch(`${API}/api/status`);
@@ -628,49 +394,41 @@
             botRunning = data.running;
             currentMode = data.mode;
 
-            // Status badge
             const badge = document.getElementById('statusBadge');
             const text = document.getElementById('statusText');
+            const startBtn = document.getElementById('startBtn');
+
             if (botRunning) {
                 badge.className = 'badge badge-running';
                 text.textContent = 'Running';
-                document.getElementById('startBtn').textContent = 'Stop';
-                document.getElementById('startBtn').className = 'btn btn-danger btn-sm';
+                startBtn.textContent = 'Stop';
+                startBtn.className = 'btn btn-danger btn-sm';
             } else {
                 badge.className = 'badge badge-stopped';
                 text.textContent = 'Stopped';
-                document.getElementById('startBtn').textContent = 'Start';
-                document.getElementById('startBtn').className = 'btn btn-primary btn-sm';
+                startBtn.textContent = 'Start';
+                startBtn.className = 'btn btn-primary btn-sm';
             }
 
-            // Mode badge
             const modeBadge = document.getElementById('modeBadge');
             modeBadge.textContent = currentMode === 'live' ? 'LIVE' : 'Paper';
             modeBadge.className = currentMode === 'live' ? 'badge badge-live' : 'badge badge-paper';
             document.getElementById('modeToggleText').textContent = currentMode === 'live' ? 'Paper' : 'Live';
 
-            // Stats
             const stats = data.strategy_stats || {};
             document.getElementById('statBalance').textContent = '$' + ((stats.balance_cents || 0) / 100).toFixed(2);
             document.getElementById('statSignals').textContent = stats.signals_generated || 0;
             document.getElementById('statTrades').textContent = stats.signals_traded || 0;
             
             const total = (stats.wins || 0) + (stats.losses || 0);
-            if (total > 0) {
-                const wr = ((stats.wins / total) * 100).toFixed(1);
-                document.getElementById('statWinRate').textContent = wr + '%';
-            } else {
-                document.getElementById('statWinRate').textContent = '—';
-            }
-
+            document.getElementById('statWinRate').textContent = total > 0 ? ((stats.wins / total) * 100).toFixed(1) + '%' : '—';
+            
             const pnl = (stats.daily_pnl_cents || 0) / 100;
             const pnlEl = document.getElementById('statPnl');
             pnlEl.textContent = (pnl >= 0 ? '+' : '') + '$' + pnl.toFixed(2);
             pnlEl.className = 'stat-value ' + (pnl >= 0 ? 'positive' : 'negative');
-
             document.getElementById('statScans').textContent = data.scan_count || 0;
 
-            // Config
             if (data.config) {
                 document.getElementById('cfgEdge').value = data.config.min_edge;
                 document.getElementById('cfgConf').value = data.config.min_confidence;
@@ -680,10 +438,7 @@
                 document.getElementById('cfgInterval').value = data.config.scan_interval;
             }
 
-            // Signals
             renderSignals(data.recent_signals || []);
-
-            // Analyses from signals
             renderAnalyses(data.recent_signals || []);
         }
 
@@ -695,19 +450,18 @@
             }
 
             if (filtered.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="11" class="empty-state">No signals yet. Start the bot or run a manual scan.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="10" class="empty-state">No signals yet. Start the bot or run a manual scan.</td></tr>';
                 return;
             }
 
-            tbody.innerHTML = filtered.reverse().map(s => `
+            tbody.innerHTML = [...filtered].reverse().map(s => `
                 <tr>
                     <td style="font-size:11px;color:var(--text-dim);">${new Date(s.timestamp).toLocaleTimeString()}</td>
                     <td><span class="sport-tag sport-${s.sport}">${s.sport}</span></td>
-                    <td style="font-family:var(--sans);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${s.event_title}">${s.event_title}</td>
+                    <td style="font-family:var(--sans);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${s.event_title}">${s.event_title}</td>
                     <td class="side-${s.side}">${s.side.toUpperCase()}</td>
                     <td>${s.price_cents}¢</td>
                     <td>${(s.model_probability * 100).toFixed(1)}%</td>
-                    <td>${(s.market_probability * 100).toFixed(1)}%</td>
                     <td style="color:${s.edge > 0 ? 'var(--green)' : 'var(--red)'};">${(s.edge * 100).toFixed(1)}%</td>
                     <td>${(s.confidence * 100).toFixed(0)}%</td>
                     <td>$${s.suggested_size_dollars.toFixed(2)}</td>
@@ -722,11 +476,9 @@
                 container.innerHTML = '<div class="empty-state">Run a scan to see match analyses.</div>';
                 return;
             }
-
             container.innerHTML = signals.slice(-5).reverse().map(s => {
                 const a = s.analysis || {};
                 const factors = a.factors || {};
-                
                 if (s.sport === 'tennis') {
                     return renderTennisAnalysis(s, a, factors);
                 } else {
@@ -740,8 +492,6 @@
             const fat = factors.fatigue || {};
             const rank = factors.ranking || {};
             const form = factors.recent_form || {};
-            const h2h = factors.h2h || {};
-
             return `
                 <div class="analysis-card">
                     <div class="analysis-header">
@@ -757,7 +507,6 @@
                     ${renderFactorBar('Surface', surf.p1 || 0, surf.p2 || 0)}
                     ${renderFactorBar('Form', form.p1 || 0.5, form.p2 || 0.5)}
                     ${renderFactorBar('Fatigue', 1 - (fat.p1 || 0), 1 - (fat.p2 || 0))}
-                    ${renderFactorBar('H2H', h2h.p1_wins || 0, h2h.p2_wins || 0)}
                     ${renderFactorBar('Ranking', rank.p1 ? (300 - rank.p1) / 300 : 0.5, rank.p2 ? (300 - rank.p2) / 300 : 0.5)}
                 </div>
             `;
@@ -767,9 +516,6 @@
             const pitch = factors.pitching || {};
             const bat = factors.batting || {};
             const bp = factors.bullpen || {};
-            const park = factors.park || {};
-            const form = factors.recent_form || {};
-
             return `
                 <div class="analysis-card">
                     <div class="analysis-header">
@@ -785,8 +531,6 @@
                     ${renderFactorBar('Pitching', mapERA(pitch.home_era), mapERA(pitch.away_era))}
                     ${renderFactorBar('Batting', mapOPS(bat.home_ops), mapOPS(bat.away_ops))}
                     ${renderFactorBar('Bullpen', mapERA(bp.home_era), mapERA(bp.away_era))}
-                    ${renderFactorBar('Park', (park.factor || 1.0) > 1 ? 0.7 : 0.3, 0.5)}
-                    ${renderFactorBar('Form', (form.home || {}).win_pct || 0.5, (form.away || {}).win_pct || 0.5)}
                 </div>
             `;
         }
@@ -796,15 +540,12 @@
 
         function renderFactorBar(label, val1, val2) {
             const w1 = Math.max(5, Math.min(95, val1 * 100));
-            const w2 = Math.max(5, Math.min(95, val2 * 100));
             const diff = val1 - val2;
             const cls = diff > 0.05 ? 'positive' : diff < -0.05 ? 'negative' : 'neutral';
             return `
                 <div class="factor-bar">
                     <span class="factor-label">${label}</span>
-                    <div class="factor-track">
-                        <div class="factor-fill ${cls}" style="width:${w1}%"></div>
-                    </div>
+                    <div class="factor-track"><div class="factor-fill ${cls}" style="width:${w1}%"></div></div>
                     <span class="factor-value" style="color:var(--${cls === 'positive' ? 'green' : cls === 'negative' ? 'red' : 'text-dim'})">
                         ${diff >= 0 ? '+' : ''}${(diff * 100).toFixed(0)}
                     </span>
@@ -812,28 +553,22 @@
             `;
         }
 
-        // ── Actions ──────────────────────────────────────────────
-
         async function toggleBot() {
-            if (botRunning) {
-                await fetch(`${API}/api/stop`, { method: 'POST' });
-            } else {
-                await fetch(`${API}/api/start`, { method: 'POST' });
-            }
+            const endpoint = botRunning ? '/api/stop' : '/api/start';
+            await fetch(`${API}${endpoint}`, { method: 'POST' });
             setTimeout(fetchStatus, 500);
         }
 
         async function triggerScan() {
-            const btn = event.target;
+            const btn = document.getElementById('scanBtn');
+            const originalText = btn.textContent;
             btn.textContent = 'Scanning...';
             btn.disabled = true;
             try {
                 await fetch(`${API}/api/scan`, { method: 'POST' });
                 await fetchStatus();
-            } catch (e) {
-                console.error(e);
-            }
-            btn.textContent = 'Scan Now';
+            } catch (e) { console.error(e); }
+            btn.textContent = originalText;
             btn.disabled = false;
         }
 
@@ -871,16 +606,11 @@
                 const data = await res.json();
                 const el = document.getElementById('logOutput');
                 el.innerHTML = (data.logs || []).map(line => {
-                    let cls = '';
-                    if (line.includes('[INFO]')) cls = 'log-info';
-                    else if (line.includes('[WARNING]')) cls = 'log-warn';
-                    else if (line.includes('[ERROR]')) cls = 'log-error';
+                    let cls = line.includes('[INFO]') ? 'log-info' : line.includes('[WARNING]') ? 'log-warn' : line.includes('[ERROR]') ? 'log-error' : '';
                     return `<div class="${cls}">${escapeHtml(line)}</div>`;
                 }).join('');
                 el.scrollTop = el.scrollHeight;
-            } catch (e) {
-                console.error(e);
-            }
+            } catch (e) { console.error(e); }
         }
 
         async function loadMLBSchedule() {
@@ -888,51 +618,33 @@
                 const res = await fetch(`${API}/api/mlb/schedule`);
                 const data = await res.json();
                 const el = document.getElementById('mlbContent');
-                
-                if (!data.games || data.games.length === 0) {
+                if (!data.games?.length) {
                     el.innerHTML = '<div class="empty-state">No MLB games scheduled today.</div>';
                     return;
                 }
-
-                el.innerHTML = data.games.map(g => {
-                    const a = g.analysis || {};
-                    return `
-                        <div class="analysis-card">
-                            <div class="analysis-header">
-                                <span class="analysis-title">${g.away_team?.name || '?'} @ ${g.home_team?.name || '?'}</span>
-                                <span style="font-size:12px;color:var(--text-dim);">${g.status}</span>
-                            </div>
-                            <div style="font-size:11px;color:var(--text-dim);">
-                                ${g.away_pitcher?.name || 'TBD'} vs ${g.home_pitcher?.name || 'TBD'} | ${g.venue || ''}
-                                ${a.home_win_probability ? ` | Home: ${(a.home_win_probability * 100).toFixed(1)}%` : ''}
-                            </div>
+                el.innerHTML = data.games.map(g => `
+                    <div class="analysis-card">
+                        <div class="analysis-header">
+                            <span class="analysis-title">${g.away_team?.name || '?'} @ ${g.home_team?.name || '?'}</span>
+                            <span style="font-size:12px;color:var(--text-dim);">${g.status}</span>
                         </div>
-                    `;
-                }).join('');
-            } catch (e) {
-                document.getElementById('mlbContent').innerHTML = '<div class="empty-state">Failed to load schedule.</div>';
-            }
+                        <div style="font-size:11px;color:var(--text-dim);">
+                            ${g.away_pitcher?.name || 'TBD'} vs ${g.home_pitcher?.name || 'TBD'} | ${g.venue || ''}
+                            ${g.analysis?.home_win_probability ? ` | Home: ${(g.analysis.home_win_probability * 100).toFixed(1)}%` : ''}
+                        </div>
+                    </div>
+                `).join('');
+            } catch (e) { document.getElementById('mlbContent').innerHTML = '<div class="empty-state">Failed to load schedule.</div>'; }
         }
 
-        function filterSignals(filter) {
-            signalFilter = filter;
-            fetchStatus();
-        }
-
-        // ── Credentials ──────────────────────────────────────────
-
-        function openCredentials() {
-            document.getElementById('credModal').classList.add('active');
-        }
-        function closeCredentials() {
-            document.getElementById('credModal').classList.remove('active');
-        }
+        function filterSignals(filter) { signalFilter = filter; fetchStatus(); }
+        function openCredentials() { document.getElementById('credModal').classList.add('active'); }
+        function closeCredentials() { document.getElementById('credModal').classList.remove('active'); }
 
         async function saveCredentials() {
             const statusEl = document.getElementById('credStatus');
             statusEl.textContent = 'Connecting...';
             statusEl.style.color = 'var(--accent)';
-
             try {
                 const res = await fetch(`${API}/api/credentials`, {
                     method: 'POST',
@@ -958,27 +670,20 @@
             }
         }
 
-        // ── Tabs ─────────────────────────────────────────────────
-
         function switchTab(el, tabId) {
             const parent = el.closest('.card');
             parent.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             parent.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             el.classList.add('active');
             document.getElementById(tabId).classList.add('active');
-            
             if (tabId === 'logsTab') refreshLogs();
             if (tabId === 'mlbTab') loadMLBSchedule();
         }
 
-        function escapeHtml(str) {
-            return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-        }
-
-        // ── Init ─────────────────────────────────────────────────
+        function escapeHtml(str) { return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
         fetchStatus();
-        setInterval(fetchStatus, 5000);  // Poll every 5 seconds
+        setInterval(fetchStatus, 5000);
     </script>
 </body>
 </html>
